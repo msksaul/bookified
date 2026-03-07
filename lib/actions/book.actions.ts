@@ -97,3 +97,22 @@ export const saveBookSegments = async (bookId: string, clerkId: string, segments
     }
   }
 }
+
+export const getAllBooks = async () => {
+  try {
+    await connectToDatabase()
+
+    const books = await Book.find().sort({ createdAt: -1 }).lean()
+
+    return {
+      success: true,
+      data: serializeData(books)
+    }
+  } catch (error) {
+    console.error('Error connecting to database', error)
+    return {
+      success: false,
+      error
+    }
+  }
+}
