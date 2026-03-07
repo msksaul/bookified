@@ -263,6 +263,12 @@ export const useVapi = (book: IBook) => {
       })
     } catch (error) {
       console.error('Error starting call', error)
+      if(sessionIdRef.current) {
+        endVoiceSession(sessionIdRef.current, 0)
+          .catch((endErr) => console.error('Failed to rollback voice session after start failure: ', endErr))
+
+        sessionIdRef.current = null
+      }
       setStatus('idle')
       setLimitError('An error ocurred while starting the call')
     }
