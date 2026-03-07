@@ -20,7 +20,7 @@ import FileUploader from './FileUploader';
 import LoadingOverlay from './LoadingOverlay';
 import VoiceSelector from './VoiceSelector';
 
-const UploadForm = () => {
+const UploadForm = () => {      
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isMounted, setIsMounted] = useState(false);
     const { userId } = useAuth();
@@ -43,7 +43,7 @@ const UploadForm = () => {
 
     const onSubmit = async (data: BookUploadFormValues) => {
         if(!userId) {
-           return toast.error("Please login to upload books");
+            return toast.error("Please login to upload books");
         }
 
         setIsSubmitting(true);
@@ -111,9 +111,9 @@ const UploadForm = () => {
 
             if(!book.success) {
                 toast.error(book.error as string || "Failed to create book");
-                if (book.isBillingError) {
+                /* if (book.isBillingError) {
                     router.push("/subscriptions");
-                }
+                } */
                 return;
             }
 
