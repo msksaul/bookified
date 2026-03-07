@@ -29,7 +29,6 @@ const UploadForm = () => {
     useEffect(() => {
         setIsMounted(true);
     }, []);
-
     const form = useForm<BookUploadFormValues>({
         resolver: zodResolver(UploadSchema),
         defaultValues: {
@@ -180,7 +179,7 @@ const UploadForm = () => {
                                     <FormControl>
                                         <Input
                                             className="form-input"
-                                            placeholder="ex: Rich Dad Poor Dad"
+                                            placeholder="ex: Dracula"
                                             {...field}
                                             disabled={isSubmitting}
                                         />
@@ -198,7 +197,7 @@ const UploadForm = () => {
                                     <FormControl>
                                         <Input
                                             className="form-input"
-                                            placeholder="ex: Robert Kiyosaki"
+                                            placeholder="ex: Bram Stoker"
                                             {...field}
                                             disabled={isSubmitting}
                                         />
