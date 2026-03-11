@@ -23,6 +23,7 @@ export async function POST(request: Request): Promise<NextResponse> {
       console.log('File uploaded to blob: ', blob.url)
 
       const payload = tokenPayload ? JSON.parse(tokenPayload) : null
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const userId = payload?.userId
     }})
 

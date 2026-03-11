@@ -1,7 +1,7 @@
-'use client';
+'use client'
 
 import {Mic, MicOff} from "lucide-react";
-import useVapi from "@/hooks/useVapi";
+import useVapi, { MAX_DURATION } from "@/hooks/useVapi";
 import {IBook} from "@/types";
 import Image from "next/image";
 import Transcript from "@/components/Transcript";
@@ -11,20 +11,16 @@ import {useRouter} from "next/navigation";
 import {useEffect} from "react";
 
 const VapiControls = ({ book }: { book: IBook }) => {
-    const { status, isActive, messages, currentMessage, currentUserMessage, duration, start, stop, clearError } = useVapi(book)
+    const { status, isActive, messages, currentMessage, currentUserMessage, duration, start, stop, clearError, limitError } = useVapi(book)
     const router = useRouter();
 
-/*     useEffect(() => {
+    useEffect(() => {
         if (limitError) {
             toast.error(limitError);
-            if (isBillingError) {
-                router.push("/subscriptions");
-            } else {
-                router.push("/");
-            }
+            router.push("/")
             clearError();
         }
-    }, [isBillingError, limitError, router, clearError]); */
+    }, [limitError, router, clearError]);
 
     const formatDuration = (seconds: number) => {
         const mins = Math.floor(seconds / 60);
@@ -99,7 +95,7 @@ const VapiControls = ({ book }: { book: IBook }) => {
 
                             <div className="vapi-status-indicator">
                                 <span className="vapi-status-text">
-                                    {formatDuration(duration)}
+                                    {`${formatDuration(duration)}/${formatDuration(MAX_DURATION)}`}
                                 </span>
                             </div>
                         </div>

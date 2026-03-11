@@ -13,7 +13,7 @@ export default async function BookDetailsPage({
   const { userId } = await auth();
 
   if (!userId) {
-    redirect("/sign-in");
+    redirect("/");
   }
 
   const { slug } = await params;

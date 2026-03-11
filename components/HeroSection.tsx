@@ -1,8 +1,7 @@
-import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-const HeroSection = () => {
+const HeroSection = ({userId}: {userId: string | null}) => {
     return (
         <section className="mb-10 md:mb-16">
             <div className="library-hero-card">
@@ -14,7 +13,7 @@ const HeroSection = () => {
                             Convert your books into interactive AI conversations. <br className="hidden md:block" />
                             Listen, learn, and discuss your favorite reads.
                         </p>
-                        <Link href="/books/new" className="library-cta-primary mt-4 flex items-center justify-center">
+                        <Link href={userId ? '/books/new' : '#'} className="library-cta-primary mt-4 flex items-center justify-center">
                             <span className="text-3xl font-light mb-1 mr-2">+</span>
                             <span className="text-[#212a3b]">Add new book</span>
                         </Link>
